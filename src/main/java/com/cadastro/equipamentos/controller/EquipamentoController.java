@@ -1,7 +1,7 @@
-package com.cadastro.perifericos.controller;
+package com.cadastro.equipamentos.controller;
 
-import com.cadastro.perifericos.entites.Periferico;
-import com.cadastro.perifericos.service.PerifericoService;
+import com.cadastro.equipamentos.entites.Equipamento;
+import com.cadastro.equipamentos.service.EquipamentoService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,33 +15,33 @@ import java.util.List;
 @RequestMapping("/api/perifericos")
 
 
-public class PerifericoController {
+public class EquipamentoController {
 
-    private final PerifericoService service;
+    private final EquipamentoService service;
 
-    public PerifericoController(PerifericoService service) {
+    public EquipamentoController(EquipamentoService service) {
         this.service = service;
     }
 
     //metodo Post
     @PostMapping ("/")
     @Operation(summary = "Registrar um novo periferico")
-    public ResponseEntity<Periferico> addPeriferico(@RequestBody Periferico periferico) {
-        Periferico salvo = service.salvarPeriferico(periferico);
+    public ResponseEntity<Equipamento> addPeriferico(@RequestBody Equipamento equipamento) {
+        Equipamento salvo = service.salvarPeriferico(equipamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
     //metodo GET- listar
     @GetMapping("/")
     @Operation(summary = "Listar todos os periféricos")
-    public ResponseEntity<List<Periferico>> listarTodos() {
+    public ResponseEntity<List<Equipamento>> listarTodos() {
         return ResponseEntity.ok(service.listarTodos());
     }
 
     // Get - Buscar por ID
     @GetMapping("/{id}")
     @Operation(summary = "Buscar periférico por número de série")
-    public ResponseEntity<Periferico> buscarPorId(@PathVariable String id) {
+    public ResponseEntity<Equipamento> buscarPorId(@PathVariable String id) {
         return service.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -50,8 +50,8 @@ public class PerifericoController {
     //PUT - Atualizar
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar informações de um periférico")
-    public ResponseEntity<Periferico> atualizar(@PathVariable String id, @RequestBody Periferico periferico) {
-        return ResponseEntity.ok(service.atualizar(id, periferico));
+    public ResponseEntity<Equipamento> atualizar(@PathVariable String id, @RequestBody Equipamento equipamento) {
+        return ResponseEntity.ok(service.atualizar(id, equipamento));
     }
 
     //Delete - Excluir

@@ -10,10 +10,10 @@
 		<version>3.5.0</version>
 	</parent>
 
-	<groupId>com.cadastro.perifericos</groupId>
-	<artifactId>cadastro-perifericos</artifactId>
+	<groupId>com.cadastro.equipamentos</groupId>
+	<artifactId>cadastro-equipamentos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cadastro-perifericos</name>
+	<name>cadastro-equipamentos</name>
 	<description>API para cadastro de periféricos</description>
 
 	<properties>

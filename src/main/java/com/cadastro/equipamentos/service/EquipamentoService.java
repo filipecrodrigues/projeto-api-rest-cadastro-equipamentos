@@ -1,7 +1,7 @@
-package com.cadastro.perifericos.service;
+package com.cadastro.equipamentos.service;
 
-import com.cadastro.perifericos.entites.Periferico;
-import com.cadastro.perifericos.repository.PerifericoRepository;
+import com.cadastro.equipamentos.entites.Equipamento;
+import com.cadastro.equipamentos.repository.EquipamentoRepository;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,34 +15,34 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PerifericoService {
+public class EquipamentoService {
 
         // injeção de dependencias
         @Autowired
-        private PerifericoRepository repository;
+        private EquipamentoRepository repository;
 
 
         //Salva um novo periférico no banco de dados.
-        public Periferico salvarPeriferico(Periferico periferico){
-            return repository.save(periferico);
+        public Equipamento salvarPeriferico(Equipamento equipamento){
+            return repository.save(equipamento);
         }
 
 
         //Retorna uma lista com todos os periféricos cadastrados.
-        public List<Periferico> listarTodos(){
+        public List<Equipamento> listarTodos(){
             return repository.findAll();
         }
 
 
         //Busca um periférico pelo seu ID.
-        public Optional<Periferico> buscarPorId(String id){
+        public Optional<Equipamento> buscarPorId(String id){
             return repository.findById(id);
         }
 
 
         //Atualiza um periférico existente com novos dados
-        public Periferico atualizar(String id, Periferico atualizado) {
-        Periferico existente = repository.findById(id)
+        public Equipamento atualizar(String id, Equipamento atualizado) {
+        Equipamento existente = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Periférico não encontrado: " + id));
 
         existente.setMarca(atualizado.getMarca());
@@ -68,7 +68,7 @@ public class PerifericoService {
 
 
         public byte[] generateExcel () throws IOException{
-            List<Periferico>perifericos = repository.findAll();
+            List<Equipamento> equipamentos = repository.findAll();
 
             try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
                 Sheet sheet = workbook.createSheet("Perifericos");
@@ -83,14 +83,14 @@ public class PerifericoService {
 
                 //Dados
                 int numeroDeLinhas =1;
-                for (Periferico periferico: perifericos){
+                for (Equipamento equipamento : equipamentos){
 
                     Row linha = sheet.createRow(numeroDeLinhas++);
-                    linha.createCell(0).setCellValue(periferico.getNumeroDeSerie());
-                    linha.createCell(1).setCellValue(periferico.getMarca());
-                    linha.createCell(2).setCellValue(periferico.getModelo());
-                    linha.createCell(3).setCellValue(periferico.getDataDeEntrega().toString());
-                    linha.createCell(4).setCellValue(calcularDiasDeUso(periferico.getDataDeEntrega()));
+                    linha.createCell(0).setCellValue(equipamento.getNumeroDeSerie());
+                    linha.createCell(1).setCellValue(equipamento.getMarca());
+                    linha.createCell(2).setCellValue(equipamento.getModelo());
+                    linha.createCell(3).setCellValue(equipamento.getDataDeEntrega().toString());
+                    linha.createCell(4).setCellValue(calcularDiasDeUso(equipamento.getDataDeEntrega()));
                 }
                 workbook.write(out);
                 return out.toByteArray();

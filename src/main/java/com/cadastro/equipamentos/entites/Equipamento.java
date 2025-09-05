@@ -1,4 +1,4 @@
-package com.cadastro.perifericos.entites;
+package com.cadastro.equipamentos.entites;
 
 
 
@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDate;
 
 @Entity  //é uma entidade persistente (mapeada para uma tabela no banco de dados).
-public class Periferico {
+public class Equipamento {
 
     @Id //Marca o campo como chave primária da tabela.
     private String numeroDeSerie;
@@ -17,10 +17,10 @@ public class Periferico {
     private LocalDate dataDeEntrega;
 
     //Construtor padrão
-    public Periferico() {}
+    public Equipamento() {}
 
     //metodos getters e setters
-    public Periferico(String numeroDeSerie) {
+    public Equipamento(String numeroDeSerie) {
         this.numeroDeSerie = numeroDeSerie;
     }
 

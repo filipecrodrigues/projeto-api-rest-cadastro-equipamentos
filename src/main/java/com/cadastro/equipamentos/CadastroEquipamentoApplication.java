@@ -1,13 +1,13 @@
-package com.cadastro.perifericos;
+package com.cadastro.equipamentos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CadastroPerifericosApplication {
+public class CadastroEquipamentoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CadastroPerifericosApplication.class, args);
+		SpringApplication.run(CadastroEquipamentoApplication.class, args);
 	}
 
 }
