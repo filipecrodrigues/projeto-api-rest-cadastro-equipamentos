@@ -22,28 +22,28 @@ public class EquipamentoService {
         private EquipamentoRepository repository;
 
 
-        //Salva um novo periférico no banco de dados.
-        public Equipamento salvarPeriferico(Equipamento equipamento){
+        //Salva um novo equipamento no banco de dados.
+        public Equipamento salvarEquipamento(Equipamento equipamento){
             return repository.save(equipamento);
         }
 
 
-        //Retorna uma lista com todos os periféricos cadastrados.
+        //Retorna uma lista com todos os equipamentos cadastrados.
         public List<Equipamento> listarTodos(){
             return repository.findAll();
         }
 
 
-        //Busca um periférico pelo seu ID.
+        //Busca um equipamento pelo seu ID.
         public Optional<Equipamento> buscarPorId(String id){
             return repository.findById(id);
         }
 
 
-        //Atualiza um periférico existente com novos dados
+        //Atualiza um equipamento existente com novos dados
         public Equipamento atualizar(String id, Equipamento atualizado) {
         Equipamento existente = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Periférico não encontrado: " + id));
+                .orElseThrow(() -> new RuntimeException("Equipamento não encontrado: " + id));
 
         existente.setMarca(atualizado.getMarca());
         existente.setModelo(atualizado.getModelo());
@@ -52,10 +52,10 @@ public class EquipamentoService {
         return repository.save(existente);
     }
 
-        //Remove um periférico do banco de dados pelo número de série.
+        //Remove um Equipamento do banco de dados pelo número de série.
         public void deletar(String numeroDeSerie) {
         if (!repository.existsById(numeroDeSerie)) {
-            throw new RuntimeException("Periférico não encontrado: " + numeroDeSerie);
+            throw new RuntimeException("Equipamento não encontrado: " + numeroDeSerie);
         }
         repository.deleteById(numeroDeSerie);
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/perifericos")
+@RequestMapping("/api/equipamentos")
 
 
 public class EquipamentoController {
@@ -25,22 +25,22 @@ public class EquipamentoController {
 
     //metodo Post
     @PostMapping ("/")
-    @Operation(summary = "Registrar um novo periferico")
-    public ResponseEntity<Equipamento> addPeriferico(@RequestBody Equipamento equipamento) {
-        Equipamento salvo = service.salvarPeriferico(equipamento);
+    @Operation(summary = "Registrar um novo equipamento")
+    public ResponseEntity<Equipamento> addEquipamento(@RequestBody Equipamento equipamento) {
+        Equipamento salvo = service.salvarEquipamento(equipamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
     //metodo GET- listar
     @GetMapping("/")
-    @Operation(summary = "Listar todos os periféricos")
+    @Operation(summary = "Listar todos os equipamentos")
     public ResponseEntity<List<Equipamento>> listarTodos() {
         return ResponseEntity.ok(service.listarTodos());
     }
 
     // Get - Buscar por ID
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar periférico por número de série")
+    @Operation(summary = "Buscar equipamento por número de série")
     public ResponseEntity<Equipamento> buscarPorId(@PathVariable String id) {
         return service.buscarPorId(id)
                 .map(ResponseEntity::ok)
@@ -49,14 +49,14 @@ public class EquipamentoController {
 
     //PUT - Atualizar
     @PutMapping("/{id}")
-    @Operation(summary = "Atualizar informações de um periférico")
+    @Operation(summary = "Atualizar informações de um equipamento")
     public ResponseEntity<Equipamento> atualizar(@PathVariable String id, @RequestBody Equipamento equipamento) {
         return ResponseEntity.ok(service.atualizar(id, equipamento));
     }
 
     //Delete - Excluir
     @DeleteMapping("/{id}")
-    @Operation(summary = "Excluir periferico pelo número de série")
+    @Operation(summary = "Excluir equipamento pelo número de série")
     public ResponseEntity<Void> deletar(@PathVariable String id) {
         service.deletar(id);
         return ResponseEntity.noContent().build();
