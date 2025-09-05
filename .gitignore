@@ -1,0 +1,88 @@
+### Arquivos gerais ###
+HELP.md
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+### Backend - Maven / Gradle ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+!**/src/main/**/target/
+!**/src/test/**/target/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Backend - Spring Boot ###
+*.jar
+*.war
+*.ear
+*.xlsx
+*.xls
+*.csv
+*.pdf
+
+### Frontend - Node / React / Vite ###
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+frontend/package-lock.json
+frontend/yarn.lock
+
+### Banco H2 (local) ###
+*.mv.db
+*.h2.db
+*.trace.db
+/data/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse / STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Sistema Operacional ###
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs extras
+logs
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
