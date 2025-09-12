@@ -1,6 +1,6 @@
 # Sistema de Cadastro de Equipamentos
 
-Uma API REST desenvolvida em Spring Boot para gerenciar o cadastro de equipamentos/periféricos, oferecendo funcionalidades completas de CRUD e geração de relatórios em Excel.
+Uma API REST desenvolvida em Spring Boot para gerenciar o cadastro de equipamentos no setor de TI , oferecendo funcionalidades completas de CRUD e geração de relatórios em Excel que é utlizado para avaliar tempo de vida util do equipamento, visando a reduçaão de custos futuras comprando equipamentos com maior tempo de durabilidade.
 
 ##  Funcionalidades
 
@@ -68,7 +68,7 @@ A entidade `Equipamento` possui os seguintes campos:
    ```
 
 3. **Acesse a aplicação**
-    - API: `http://localhost:8080`
+    - API: `http://localhost:8080/equipamentos`
     - Console H2: `http://localhost:8080/h2-console`
     - Documentação Swagger: `http://localhost:8080/swagger-ui.html`
 
@@ -80,47 +80,16 @@ A entidade `Equipamento` possui os seguintes campos:
 
 ##  Endpoints da API
 
-### Equipamentos
-
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
-| `POST` | `/api/equipamentos` | Cadastrar novo equipamento |
-| `GET` | `/api/equipamentos` | Listar todos os equipamentos |
-| `GET` | `/api/equipamentos/{id}` | Buscar equipamento por número de série |
-| `PUT` | `/api/equipamentos/{id}` | Atualizar equipamento |
-| `DELETE` | `/api/equipamentos/{id}` | Excluir equipamento |
-| `GET` | `/api/equipamentos/excel` | Gerar relatório Excel |
+| `POST` | `/equipamentos` | Cadastrar novo equipamento |
+| `GET` | `/equipamentos` | Listar todos os equipamentos |
+| `GET` | `/equipamentos/{id}` | Buscar equipamento por número de série |
+| `PUT` | `/equipamentos/{id}` | Atualizar equipamento |
+| `DELETE` | `/equipamentos/{id}` | Excluir equipamento |
+| `GET` | `/equipamentos/excel` | Gerar relatório Excel |
 
-### Exemplos de Uso
 
-#### Cadastrar Equipamento
-```bash
-curl -X POST http://localhost:8080/api/equipamentos/ \
--H "Content-Type: application/json" \
--d '{
-  "numeroDeSerie": "EQ001",
-  "marca": "Dell",
-  "modelo": "OptiPlex 7090",
-  "dataDeEntrega": "2024-01-15"
-}'
-```
-
-#### Listar Equipamentos
-```bash
-curl http://localhost:8080/api/equipamentos/
-```
-
-#### Buscar por Número de Série
-```bash
-curl http://localhost:8080/api/equipamentos/EQ001
-```
-
-#### Gerar Relatório Excel
-```bash
-curl http://localhost:8080/api/equipamentos/excel \
--H "Accept: application/octet-stream" \
---output relatorio-equipamentos.xlsx
-```
 
 ##  Relatório Excel
 
@@ -145,21 +114,7 @@ A documentação permite:
 - Verificar modelos de dados
 - Consultar códigos de resposta
 
-##  Banco de Dados
 
-O projeto utiliza H2 Database para desenvolvimento:
-
-- **Persistência**: Arquivo local (`./data/equipamentosdb`)
-- **Console Web**: Habilitado para consultas SQL
-- **DDL**: Criação/atualização automática de tabelas
-
-### Acessar Console H2
-
-1. Vá para: `http://localhost:8080/h2-console`
-2. Configure:
-    - JDBC URL: `jdbc:h2:file:./data/equipamentosdb`
-    - User Name: `sa`
-    - Password: (deixe vazio)
 
 ## Configurações
 
@@ -179,25 +134,12 @@ O sistema possui logs configurados para:
 - Debug do Spring Web
 - Trace do Spring HTTP
 
-## Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
 
 ## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-## Suporte
-
-Para dúvidas ou problemas:
-- Abra uma issue no GitHub
-- Consulte a documentação do Swagger
-- Verifique os logs da aplicação
 
 ---
 
-**Desenvolvido com Spring Boot**
+**Desenvolvido por Filipe Cândido Rodrigues**
