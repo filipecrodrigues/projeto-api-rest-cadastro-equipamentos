@@ -24,7 +24,7 @@ public class EquipamentoController {
     }
 
     //metodo Post
-    @PostMapping ("/")
+    @PostMapping
     @Operation(summary = "Registrar um novo equipamento")
     public ResponseEntity<Equipamento> addEquipamento(@RequestBody Equipamento equipamento) {
         Equipamento salvo = service.salvarEquipamento(equipamento);
@@ -32,7 +32,7 @@ public class EquipamentoController {
     }
 
     //metodo GET- listar
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "Listar todos os equipamentos")
     public ResponseEntity<List<Equipamento>> listarTodos() {
         return ResponseEntity.ok(service.listarTodos());
