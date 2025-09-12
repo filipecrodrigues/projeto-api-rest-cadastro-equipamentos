@@ -84,8 +84,8 @@ A entidade `Equipamento` possui os seguintes campos:
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
-| `POST` | `/api/equipamentos/` | Cadastrar novo equipamento |
-| `GET` | `/api/equipamentos/` | Listar todos os equipamentos |
+| `POST` | `/api/equipamentos` | Cadastrar novo equipamento |
+| `GET` | `/api/equipamentos` | Listar todos os equipamentos |
 | `GET` | `/api/equipamentos/{id}` | Buscar equipamento por número de série |
 | `PUT` | `/api/equipamentos/{id}` | Atualizar equipamento |
 | `DELETE` | `/api/equipamentos/{id}` | Excluir equipamento |
